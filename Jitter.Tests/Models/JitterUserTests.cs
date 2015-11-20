@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Jitter.Models;
+using System.Collections.Generic;
 
 namespace Jitter.Tests.Models
 {
