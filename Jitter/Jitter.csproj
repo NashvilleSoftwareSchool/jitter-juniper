@@ -185,6 +185,8 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\JitterContext.cs" />
+    <Compile Include="Models\JitterRepository.cs" />
     <Compile Include="Models\JitterUser.cs" />
     <Compile Include="Models\Jot.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
