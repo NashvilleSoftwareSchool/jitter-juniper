@@ -23,6 +23,8 @@ namespace Jitter.Controllers
             my_list_of_things.Add("Chef");
             my_list_of_things.Add("Greg");
 
+            ViewBag.SomeData = my_list_of_things;
+
             return View(my_list_of_things);
         }
 
