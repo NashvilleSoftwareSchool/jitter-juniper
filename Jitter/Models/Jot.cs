@@ -8,13 +8,15 @@ namespace Jitter.Models
 {
     public class Jot : IComparable
     {
-        public JitterUser Author { get; set; }
+        // Add keyword 'virtual'
+        public virtual JitterUser Author { get; set; }
         [Required]
         public string Content { get; set; }
         public DateTime Date { get; set; }
         [Key]
         public int JotId { get; set; }
         public string Picture { get; set; }
+
 
         public int CompareTo(object obj)
         {
