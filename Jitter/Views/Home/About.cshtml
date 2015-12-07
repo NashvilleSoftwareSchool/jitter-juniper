@@ -14,3 +14,10 @@
     <li>@item</li>
     }
 </ul>
+
+<ul>
+    @foreach (var item in ViewBag.SomeData as IEnumerable<string>)
+    {
+        <li>@item</li>
+    }
+</ul>
