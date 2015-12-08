@@ -27,6 +27,25 @@ namespace Jitter.Models
             return query.ToList();
         }
 
+        public Jot GetJotById(JitterUser user, int jot_id)
+        {
+            // IQueryable that contains a single JitterUser
+            var query = from u in _context.JitterUsers where u.JitterUserId == user.JitterUserId select u;
+            JitterUser found_user = query.Single<JitterUser>();
+            var query2 = from jot in found_user.Jots where jot.JotId == jot_id select jot;
+            Jot found_jot = query2.Single<Jot>();
+            return found_jot;
+
+        }
+
+        public List<Jot> GetUserJots(JitterUser user)
+        {
+            var query = from u in _context.JitterUsers where u.JitterUserId == user.JitterUserId select u;
+            JitterUser found_user = query.Single<JitterUser>();
+            return found_user.Jots;
+        }
+
+
         public JitterUser GetUserByHandle(string handle)
         {
             // SQL: select * from JitterUsers AS users where users.Handle = handle;
