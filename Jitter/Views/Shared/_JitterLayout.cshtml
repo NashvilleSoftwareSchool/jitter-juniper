@@ -7,7 +7,7 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
-<body>
+<body ng-app="jitter">
     @Html.Partial("_Nav")
     <div class="container body-content">
         <div class="row">
@@ -31,7 +31,7 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/Content/myjavascript")
+    @Scripts.Render("~/bundles/angularjs")
     @RenderSection("scripts", required: false)
 </body>
 </html>
