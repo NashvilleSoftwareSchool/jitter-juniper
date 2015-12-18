@@ -23,6 +23,24 @@ namespace Jitter.Controllers
         // Maybe the Public feed here?
         public ActionResult Index()
         {
+            string user_id = User.Identity.GetUserId();
+            ApplicationUser real_user = Repo.Context.Users.FirstOrDefault(u => u.Id == user_id);
+            JitterUser me = null;
+            try
+            {
+                me = Repo.GetAllUsers().Where(u => u.RealUser.Id == user_id).Single();
+            } catch (Exception)
+            {
+                bool successful = Repo.CreateJitterUser(real_user, "adam1");
+                if (successful)
+                {
+
+                } else
+                {
+                    int s = 1;
+                }
+//                    ]
+            }
             List<Jot> my_jots = Repo.GetAllJots();
             // How you send a list of anything to a view
             return View(my_jots);

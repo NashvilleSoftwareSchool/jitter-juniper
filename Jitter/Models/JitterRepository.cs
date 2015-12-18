@@ -122,5 +122,29 @@ namespace Jitter.Models
             }
             return is_added;
         }
+
+        public bool CreateJitterUser(ApplicationUser app_user, string new_handle)
+        {
+            bool handle_is_available = this.IsHandleAvailable(new_handle);
+            if (handle_is_available)
+            {
+                JitterUser new_user = new JitterUser { RealUser = app_user, Handle = new_handle };
+                bool is_added = true;
+                try
+                {
+                    JitterUser added_user = _context.JitterUsers.Add(new_user);
+                    _context.SaveChanges();
+                }
+                catch (Exception)
+                {
+                    is_added = false;
+                }
+                return is_added;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
