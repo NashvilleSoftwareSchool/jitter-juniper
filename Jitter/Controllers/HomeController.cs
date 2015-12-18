@@ -10,7 +10,7 @@ namespace Jitter.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            return RedirectToAction("Index", "Jitter");
         }
 
         public ActionResult About()
