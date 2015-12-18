@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Jitter.Models.JitterUser>
+
+@{
+    Layout = "~/Views/Shared/_JitterLayout.cshtml";
+}
+<table>
+@foreach (var item in Model)
+{
+    <tr>
+        <td>@item.JitterUserId</td>
+        <td>@item.Handle</td>
+        @if (item.RealUser == null)
+        {
+            <td>Not Connected</td>
+            <td>Nope</td>
+        }
+        else
+        {
+            <td>@item.RealUser.Email</td>
+            <td>
+                @item.RealUser.Id
+            </td>
+        }
+    </tr>
+}
+</table>
+<div ng-controller="Controller">
+<button ng-click="deleteUsers()">Delete all Users!</button>
+</div>
