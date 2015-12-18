@@ -19,6 +19,12 @@ namespace Jitter.Controllers
             Repo = new JitterRepository();
         }
 
+        public ActionResult Admin()
+        {
+            List<JitterUser> all_users = Repo.GetAllUsers();
+            return View(all_users);
+        }
+
         // GET: Jitter
         // Maybe the Public feed here?
         public ActionResult Index()
@@ -72,7 +78,7 @@ namespace Jitter.Controllers
 
 
             /* V3 */
-            JitterUser me = Repo.GetAllUsers().Where(u => u.RealUser.Id == user_id).Single();
+            JitterUser me = Repo.GetAllUsers().Where(u => u.RealUser.Id == user_id).SingleOrDefault();
             
             List<Jot> list_of_jots = Repo.GetUserJots(me);
             return View(list_of_jots);

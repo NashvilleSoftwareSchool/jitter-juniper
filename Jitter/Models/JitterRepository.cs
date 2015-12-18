@@ -40,11 +40,27 @@ namespace Jitter.Models
 
         public List<Jot> GetUserJots(JitterUser user)
         {
-            var query = from u in _context.JitterUsers where u.JitterUserId == user.JitterUserId select u;
-            JitterUser found_user = query.Single<JitterUser>();
-            return found_user.Jots;
+            // user may be null b/c of Line 75 in JitterController
+            if (user != null)
+            {
+                var query = from u in _context.JitterUsers where u.JitterUserId == user.JitterUserId select u;
+                JitterUser found_user = query.SingleOrDefault<JitterUser>();
+                if (found_user == null)
+                {
+                    return new List<Jot>();
+                }
+                return found_user.Jots;
+            } else
+            {
+                return new List<Jot>();
+            }
         }
 
+        public void DeleteAllUsers()
+        {
+            Context.JitterUsers.RemoveRange(Context.JitterUsers);
+            Context.SaveChanges();
+        }
 
         public JitterUser GetUserByHandle(string handle)
         {
