@@ -45,6 +45,17 @@ namespace Jitter.Controllers
         {
         }
 
+        public void Post(Jot new_jot)
+        {
+            string user_id = User.Identity.GetUserId();
+            JitterUser me = Repo.GetAllUsers().Where(u => u.RealUser.Id == user_id).SingleOrDefault();
+            if (me != null)
+            {
+                Repo.CreateJot(me, new_jot.Content);
+            }
+            
+        }
+
         public void Delete()
         {
             string user_id = User.Identity.GetUserId();

@@ -4,8 +4,12 @@
 }
 
 <div ng-controller="Controller">
-    <p>{{test}}</p>
-    <button ng-click="hello()">Click me!</button>
+
+    <form id="myform">
+        <input type="hidden" name="date" id="formDate" value="1"/>
+        <input type="text" name="content" id="formContent"/>
+    </form>
+    <button ng-click="postJot()"> Have Something to Say?</button>
 </div>
 
 @*foreach (var item in Model)
